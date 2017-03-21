@@ -78,6 +78,7 @@ openssl/libcrypto.a: openssl/Configure
 
 libcrypto.a: openssl/libcrypto.a
 	cp openssl/libcrypto.a .
+	cp openssl/crypto/opensslconf.h openssl/include/openssl
 
 DLL_OBJ = $(PLATFORM)/platform.cmx CoreCrypto.cmx openssl_stub.o $(DB)/DB.cmx DHDB.cmx
 CoreCrypto.cmxa: $(DLL_OBJ)
