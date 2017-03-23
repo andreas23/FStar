@@ -81,3 +81,5 @@ nubuild.progress
 
 # Z3/F* nightly/weekly files
 /nightly
+
+src/parser/ml/parse.mly
