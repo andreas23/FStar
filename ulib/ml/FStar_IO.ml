@@ -19,6 +19,8 @@ let open_read_file_bin = open_in_bin
 let open_write_file_bin = open_out_bin
 let close_read_file = close_in
 let close_write_file = close_out
+let close_read_file_bin = close_in
+let close_write_file_bin = close_out
 let read_line fd = try Pervasives.input_line fd with End_of_file -> raise EOF
 let read_bytes fd count =
   try
