@@ -24,6 +24,8 @@ val open_read_file_bin : string -> ML fd_read_bin
 val open_write_file_bin : string -> ML fd_write_bin
 val close_read_file : fd_read -> ML unit
 val close_write_file : fd_write -> ML unit
+val close_read_file_bin : fd_read_bin -> ML unit
+val close_write_file_bin : fd_write_bin -> ML unit
 val read_line : fd_read -> ML string
 val read_bytes : fd_read_bin -> int -> ML FStar.Bytes.bytes
 val read_all_bytes : fd_read_bin -> ML FStar.Bytes.bytes

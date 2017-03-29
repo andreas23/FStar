@@ -12,7 +12,8 @@ let print_string x   = Printf.printf "%s" x
 let print_any x      = Printf.printf "%A" x
 let input_line ()    = System.Console.ReadLine()
 let input_int  ()    = Int32.Parse(System.Console.ReadLine())
-let input_float ()   = Single.Parse(System.Console.ReadLine(), System.Globalization.CultureInfo.InvariantCulture);
+let input_float ()   = Single.Parse(System.Console.ReadLine(),
+                                    System.Globalization.CultureInfo.InvariantCulture);
 let open_read_file (x:string)  = new StreamReader(x)
 let open_write_file (x:string) = File.CreateText(x)
 let open_read_file_bin (x:string)  =
@@ -21,6 +22,8 @@ let open_write_file_bin (x:string) = File.CreateText(x)
   new BinaryReader(File.Open(x, FileMode.Create, FileAccess.Write))
 let close_read_file (x:fd_read)   = x.Close()
 let close_write_file (x:fd_write) = x.Close()
+let close_read_file_bin (x:fd_read_bin)   = x.Close()
+let close_write_file_bin (x:fd_write_bin) = x.Close()
 let read_line (fd:fd_read)     =
     let x = fd.ReadLine() in
     if x=null
