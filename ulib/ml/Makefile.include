@@ -7,7 +7,7 @@ FSTAR_REALIZED_MODULES=All BaseTypes Buffer Char CommonST Constructive Float Gho
 	HyperStack.All HyperStack.ST Int16 Int32 Int63 Int64 Int8 Int.Cast IO \
 	List List.Tot.Base Mul Option Pervasives.Native Set ST String \
 	UInt16 UInt32 UInt63 UInt64 UInt8 \
-        Pointer BufferNG
+         Pointer BufferNG
 	# prims is realized by default hence not included in this list
 
 
@@ -21,6 +21,14 @@ endif
 
 
 NOEXTRACT_MODULES=$(addprefix FStar., $(FSTAR_REALIZED_MODULES)) prims
+
+ifeq ($(OS), Windows_NT)
+  ULIB_ML=$(shell cygpath -m $(FSTAR_HOME)/ulib/ml)
+  OCAMLPATH=$(shell cygpath -m $(FSTAR_HOME)/bin)
+else
+  ULIB_ML=$(FSTAR_HOME)/ulib/ml
+  OCAMLPATH=$(FSTAR_HOME)/bin
+endif
 
 FSTAR_DEFAULT_ARGS=$(addprefix --no_extract ,$(NOEXTRACT_MODULES))
 FSTARLIB_DIR=$(FSTAR_HOME)/bin/fstarlib
