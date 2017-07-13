@@ -10,10 +10,13 @@ FSTAR_REALIZED_MODULES=All BaseTypes Buffer Char CommonST Constructive Float Gho
         Pointer BufferNG
 	# prims is realized by default hence not included in this list
 
+
 ifeq ($(OS), Windows_NT)
 ULIB_ML=$(shell cygpath -m $(FSTAR_HOME)/ulib/ml)
+OCAMLPATH=$(shell cygpath -m $(FSTAR_HOME)/bin)
 else
 ULIB_ML=$(FSTAR_HOME)/ulib/ml
+OCAMLPATH=$(FSTAR_HOME)/bin
 endif
 
 
@@ -28,8 +31,8 @@ FSTARLIB=$(FSTARLIB_DIR)/fstarlib.cmxa
 # 	OCAML_DEFAULT_FLAGS=-predicates hyperstack
 # endif
 
-OCAMLOPT_BARE=OCAMLPATH="$(FSTAR_HOME)/bin" ocamlfind opt
+OCAMLOPT_BARE=OCAMLPATH="$(OCAMLPATH)" ocamlfind opt
 OCAMLOPT_=$(OCAMLOPT_BARE) -package fstarlib -linkpkg -g
 OCAMLOPT=$(OCAMLOPT_) $(OCAML_DEFAULT_FLAGS)
-OCAMLC_=OCAMLPATH="$(FSTAR_HOME)/bin" ocamlfind c -package fstarlib -linkpkg -g
+OCAMLC_=OCAMLPATH="$(OCAMLPATH)" ocamlfind c -package fstarlib -linkpkg -g
 OCAMLC=$(OCAMLC_) $(OCAML_DEFAULT_FLAGS)
